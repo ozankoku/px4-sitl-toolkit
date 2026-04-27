@@ -11,4 +11,4 @@ This repository provides the "plumbing" necessary to route MAVLink telemetry bet
 - **Hybrid Setup Guides:** Comprehensive documentation on configuring complex UART/SITL hybrid testing environments.
 
 ## License
-This project is licensed under the GPLv3 License.
+This project is licensed under the Apache-2.0 License.
