@@ -104,6 +104,49 @@ def generate_head_on_scenario(
     return scenario
 
 
+def generate_crossing_scenario(
+    separation_m: float = 100.0,
+    altitude_m: float = 20.0,
+    speed_m_s: float = 5.0,
+) -> Scenario:
+    """Generate a deterministic two-UAV perpendicular crossing scenario.
+
+    Vehicle 1 starts south of the local origin and flies north. Vehicle 2
+    starts west of the local origin and flies east. Their paths intersect at
+    the origin, making this a compact regression case for right-angle crossing
+    encounters in collision-avoidance and deconfliction experiments.
+    """
+
+    separation_m = _require_positive_finite("separation_m", separation_m)
+    altitude_m = _require_positive_finite("altitude_m", altitude_m)
+    speed_m_s = _require_positive_finite("speed_m_s", speed_m_s)
+    half = separation_m / 2.0
+
+    scenario = Scenario(
+        name="crossing-2uav",
+        description="Two PX4 vehicles fly perpendicular paths that cross at the local origin.",
+        tags=["px4", "sitl", "collision-avoidance", "crossing", "regression"],
+        vehicles=[
+            Vehicle(
+                name="uav-1",
+                system_id=1,
+                px4_instance=0,
+                start_ned_m=(-half, 0.0, -altitude_m),
+                velocity_ned_m_s=(speed_m_s, 0.0, 0.0),
+            ),
+            Vehicle(
+                name="uav-2",
+                system_id=2,
+                px4_instance=1,
+                start_ned_m=(0.0, -half, -altitude_m),
+                velocity_ned_m_s=(0.0, speed_m_s, 0.0),
+            ),
+        ],
+    )
+    validate_scenario(scenario)
+    return scenario
+
+
 def generate_grid_scenario(
     rows: int,
     cols: int,

@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project uses semantic version tags.
 
+## [Unreleased]
+
+### Added
+
+- Perpendicular two-UAV crossing scenario generator.
+- `px4-sitl-toolkit scenario crossing` CLI command.
+- `examples/crossing-2uav.json` example manifest.
+
 ## [0.1.0] - 2026-06-13
 
 ### Added

@@ -63,6 +63,25 @@ def test_cli_writes_grid_manifest_to_file(tmp_path: Path):
     assert len(manifest["vehicles"]) == 4
 
 
+def test_cli_generates_crossing_manifest_to_stdout():
+    result = run_cli(
+        "scenario",
+        "crossing",
+        "--separation",
+        "70",
+        "--altitude",
+        "22",
+        "--speed",
+        "3.5",
+    )
+
+    assert result.returncode == 0, result.stderr
+    manifest = json.loads(result.stdout)
+    assert manifest["name"] == "crossing-2uav"
+    assert manifest["vehicles"][0]["start_ned_m"] == [-35.0, 0.0, -22.0]
+    assert manifest["vehicles"][1]["velocity_ned_m_s"] == [0.0, 3.5, 0.0]
+
+
 def test_cli_validate_accepts_generated_manifest(tmp_path: Path):
     output = tmp_path / "scenario.json"
     generate = run_cli("scenario", "head-on", "--output", str(output))

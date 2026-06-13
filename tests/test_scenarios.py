@@ -7,6 +7,7 @@ from px4_sitl_toolkit.scenarios import (
     Scenario,
     ScenarioValidationError,
     Vehicle,
+    generate_crossing_scenario,
     generate_grid_scenario,
     generate_head_on_scenario,
     scenario_to_dict,
@@ -32,6 +33,18 @@ def test_grid_scenario_uses_unique_system_ids_and_spacing():
     assert [v.system_id for v in scenario.vehicles] == [1, 2, 3, 4, 5, 6]
     assert scenario.vehicles[0].start_ned_m == (0.0, 0.0, -12.0)
     assert scenario.vehicles[-1].start_ned_m == (15.0, 30.0, -12.0)
+
+
+def test_crossing_scenario_places_two_vehicles_on_perpendicular_paths():
+    scenario = generate_crossing_scenario(separation_m=80, altitude_m=30, speed_m_s=4)
+
+    assert scenario.name == "crossing-2uav"
+    assert len(scenario.vehicles) == 2
+    assert scenario.vehicles[0].start_ned_m == (-40.0, 0.0, -30.0)
+    assert scenario.vehicles[1].start_ned_m == (0.0, -40.0, -30.0)
+    assert scenario.vehicles[0].velocity_ned_m_s == (4.0, 0.0, 0.0)
+    assert scenario.vehicles[1].velocity_ned_m_s == (0.0, 4.0, 0.0)
+    assert "crossing" in scenario.tags
 
 
 def test_validate_scenario_rejects_duplicate_system_ids():

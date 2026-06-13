@@ -4,25 +4,20 @@ These are small, contributor-friendly issues planned for GitHub after the reposi
 
 ## Good first issues
 
-1. **Add a crossing-path two-UAV scenario**
-   - Add `generate_crossing_scenario()`
-   - Add CLI command `px4-sitl-toolkit scenario crossing`
-   - Add tests and an example manifest
-
-2. **Add manifest schema documentation**
+1. **Add manifest schema documentation**
    - Document every field in `scenario/v1`
    - Include valid and invalid examples
    - Link from the README
 
-3. **Improve CLI error messages**
+2. **Improve CLI error messages**
    - Include the manifest path in validation failures
    - Add tests for unreadable files and invalid JSON
 
-4. **Add PX4 instance environment export**
+3. **Add PX4 instance environment export**
    - Generate a shell-friendly summary from a manifest
    - Keep this dependency-free and covered by tests
 
-5. **Add a four-vehicle convergence scenario**
+4. **Add a four-vehicle convergence scenario**
    - Generate vehicles approaching a common center point from four directions
    - Add safe default altitude, speed, and spacing parameters
 

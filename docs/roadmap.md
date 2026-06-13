@@ -5,6 +5,7 @@
 - [x] Installable Python package
 - [x] `px4-sitl-toolkit` CLI
 - [x] Head-on two-UAV manifest generator
+- [x] Perpendicular crossing two-UAV manifest generator
 - [x] Grid/swarm manifest generator
 - [x] JSON manifest validation
 - [x] CI for tests, linting, and example validation
@@ -14,7 +15,7 @@
 - [ ] Generate PX4 instance environment variables from manifests
 - [ ] Generate shell snippets for multi-vehicle SITL startup
 - [ ] Document Gazebo model assumptions
-- [ ] Add examples for four-vehicle crossing scenarios
+- [ ] Add examples for four-vehicle convergence scenarios
 
 ## v0.3.x — Replay and evaluation
 

@@ -19,6 +19,7 @@ PX4 SITL experiments are often described in notebooks, shell history, or one-off
 - Generate deterministic PX4 scenario manifests as JSON
 - Validate scenario manifests before using them in simulations or CI
 - Built-in head-on two-UAV regression scenario
+- Built-in perpendicular crossing two-UAV scenario
 - Built-in grid/swarm setup scenario
 - Zero runtime dependencies for the core CLI
 - Optional legacy helpers for MAVLink hardware/SITL bridging and visualization
@@ -52,6 +53,14 @@ Generate a two-UAV head-on scenario:
 ```bash
 px4-sitl-toolkit scenario head-on --separation 80 --altitude 25 --speed 6
 ```
+
+Generate a perpendicular crossing scenario:
+
+```bash
+px4-sitl-toolkit scenario crossing --separation 80 --altitude 25 --speed 5
+```
+
+For `crossing`, `--separation` is the axis span: each vehicle starts half that distance from the crossing point.
 
 Write a grid scenario to disk:
 

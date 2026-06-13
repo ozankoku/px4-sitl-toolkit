@@ -7,6 +7,7 @@ from pathlib import Path
 
 from .scenarios import (
     ScenarioValidationError,
+    generate_crossing_scenario,
     generate_grid_scenario,
     generate_head_on_scenario,
     scenario_from_dict,
@@ -56,6 +57,30 @@ def build_parser() -> argparse.ArgumentParser:
     )
     head_on.add_argument("--output", help="Write JSON manifest to this path instead of stdout")
 
+    crossing = scenario_commands.add_parser(
+        "crossing",
+        help="Generate a two-UAV perpendicular crossing scenario",
+    )
+    crossing.add_argument(
+        "--separation",
+        type=float,
+        default=100.0,
+        help="Axis span in metres; each UAV starts half this distance from the crossing point",
+    )
+    crossing.add_argument(
+        "--altitude",
+        type=float,
+        default=20.0,
+        help="Altitude above origin in metres",
+    )
+    crossing.add_argument(
+        "--speed",
+        type=float,
+        default=5.0,
+        help="Speed per vehicle in m/s",
+    )
+    crossing.add_argument("--output", help="Write JSON manifest to this path instead of stdout")
+
     grid = scenario_commands.add_parser("grid", help="Generate a stationary swarm grid")
     grid.add_argument("--rows", type=int, required=True, help="Number of grid rows")
     grid.add_argument("--cols", type=int, required=True, help="Number of grid columns")
@@ -81,6 +106,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         if args.command == "scenario" and args.scenario_command == "head-on":
             scenario = generate_head_on_scenario(
+                separation_m=args.separation,
+                altitude_m=args.altitude,
+                speed_m_s=args.speed,
+            )
+            _write_manifest(scenario_to_dict(scenario), args.output)
+            return 0
+
+        if args.command == "scenario" and args.scenario_command == "crossing":
+            scenario = generate_crossing_scenario(
                 separation_m=args.separation,
                 altitude_m=args.altitude,
                 speed_m_s=args.speed,
