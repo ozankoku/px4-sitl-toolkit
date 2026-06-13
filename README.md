@@ -1,5 +1,9 @@
 # PX4 SITL & MAVLink Toolkit
 
+[![CI](https://github.com/ozankoku/px4-sitl-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/ozankoku/px4-sitl-toolkit/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/ozankoku/px4-sitl-toolkit)](LICENSE)
+[![Release](https://img.shields.io/github/v/tag/ozankoku/px4-sitl-toolkit?label=release)](https://github.com/ozankoku/px4-sitl-toolkit/releases/tag/v0.1.0)
+
 Python tools for creating reproducible PX4 Software-In-The-Loop (SITL) and MAVLink experiment scenarios.
 
 The project is aimed at students, robotics researchers, and maintainers who need small, repeatable scenario manifests for UAV simulation, swarm setup checks, communication experiments, and collision-avoidance regression tests.
