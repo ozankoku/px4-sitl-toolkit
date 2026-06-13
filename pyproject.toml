@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "px4-sitl-toolkit"
+version = "0.1.0"
+description = "Scenario manifests and helper tools for reproducible PX4 SITL and MAVLink experiments."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Ozan Koku" }]
+keywords = ["px4", "sitl", "mavlink", "uav", "robotics", "simulation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Testing",
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+mavlink = ["pymavlink>=2.4"]
+viz = ["numpy>=1.23", "matplotlib>=3.7", "pillow>=10"]
+dev = ["pytest>=7.4", "ruff>=0.4"]
+
+[project.scripts]
+px4-sitl-toolkit = "px4_sitl_toolkit.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/ozankoku/px4-sitl-toolkit"
+Issues = "https://github.com/ozankoku/px4-sitl-toolkit/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+exclude = ["simulation"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

@@ -1,0 +1,61 @@
+{
+  "schema": "px4-sitl-toolkit.scenario/v1",
+  "name": "grid-2x3",
+  "description": "2 by 3 PX4 vehicle grid for repeatable swarm setup tests.",
+  "tags": [
+    "px4",
+    "sitl",
+    "swarm",
+    "grid"
+  ],
+  "vehicles": [
+    {
+      "model": "x500",
+      "name": "uav-1",
+      "px4_instance": 0,
+      "start_ned_m": [0.0, 0.0, -12.0],
+      "system_id": 1,
+      "velocity_ned_m_s": [0.0, 0.0, 0.0]
+    },
+    {
+      "model": "x500",
+      "name": "uav-2",
+      "px4_instance": 1,
+      "start_ned_m": [0.0, 15.0, -12.0],
+      "system_id": 2,
+      "velocity_ned_m_s": [0.0, 0.0, 0.0]
+    },
+    {
+      "model": "x500",
+      "name": "uav-3",
+      "px4_instance": 2,
+      "start_ned_m": [0.0, 30.0, -12.0],
+      "system_id": 3,
+      "velocity_ned_m_s": [0.0, 0.0, 0.0]
+    },
+    {
+      "model": "x500",
+      "name": "uav-4",
+      "px4_instance": 3,
+      "start_ned_m": [15.0, 0.0, -12.0],
+      "system_id": 4,
+      "velocity_ned_m_s": [0.0, 0.0, 0.0]
+    },
+    {
+      "model": "x500",
+      "name": "uav-5",
+      "px4_instance": 4,
+      "start_ned_m": [15.0, 15.0, -12.0],
+      "system_id": 5,
+      "velocity_ned_m_s": [0.0, 0.0, 0.0]
+    },
+    {
+      "model": "x500",
+      "name": "uav-6",
+      "px4_instance": 5,
+      "start_ned_m": [15.0, 30.0, -12.0],
+      "system_id": 6,
+      "velocity_ned_m_s": [0.0, 0.0, 0.0]
+    }
+  ]
+}

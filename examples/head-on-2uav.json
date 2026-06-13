@@ -1,0 +1,45 @@
+{
+  "schema": "px4-sitl-toolkit.scenario/v1",
+  "name": "head-on-2uav",
+  "description": "Two PX4 vehicles start symmetrically and fly toward each other.",
+  "tags": [
+    "px4",
+    "sitl",
+    "collision-avoidance",
+    "regression"
+  ],
+  "vehicles": [
+    {
+      "model": "x500",
+      "name": "uav-1",
+      "px4_instance": 0,
+      "start_ned_m": [
+        -40.0,
+        0.0,
+        -25.0
+      ],
+      "system_id": 1,
+      "velocity_ned_m_s": [
+        6.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "x500",
+      "name": "uav-2",
+      "px4_instance": 1,
+      "start_ned_m": [
+        40.0,
+        0.0,
+        -25.0
+      ],
+      "system_id": 2,
+      "velocity_ned_m_s": [
+        -6.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}
